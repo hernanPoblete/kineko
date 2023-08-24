@@ -13,3 +13,9 @@ export_presets.cfg
 .mono/
 data_*/
 mono_crash.*.json
+
+
+# archivos de llaves ssh
+ssh-files
+ssh-files.pub
+
