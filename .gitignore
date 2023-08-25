@@ -15,11 +15,7 @@ data_*/
 mono_crash.*.json
 
 
-# archivos de llaves ssh
-ssh-files
-ssh-files.pub
-
 # archivos extra que HP está creando en la carpeta que no sirven para el
-# desarrollo del juego
+# desarrollo del juego, pero sirven para mantenerme vivo
 
 notas.txt
