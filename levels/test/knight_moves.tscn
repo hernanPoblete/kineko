@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://ddwjuvwwphlob"]
+
+[ext_resource type="PackedScene" uid="uid://b8yohrbelqc0a" path="res://sprites/meow_knight/knight.tscn" id="1_d5p2i"]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="CharacterBody2D" parent="." instance=ExtResource("1_d5p2i")]
+position = Vector2(28, 14)

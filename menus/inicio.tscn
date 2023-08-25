@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://brtcp4a6l77be"]
+
+[node name="Control" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -6.10352e-05
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 124.0
+offset_top = 151.0
+offset_right = 182.0
+offset_bottom = 182.0
+text = "JUGAR"
