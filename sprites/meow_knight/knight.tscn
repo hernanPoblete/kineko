@@ -1,11 +1,82 @@
-[gd_scene load_steps=3 format=3 uid="uid://b8yohrbelqc0a"]
+[gd_scene load_steps=7 format=3 uid="uid://b8yohrbelqc0a"]
 
 [ext_resource type="Texture2D" uid="uid://ueus7lytx7do" path="res://sprites/meow_knight/meow-knight_idle.png" id="1_vgvx0"]
+
+[sub_resource type="GDScript" id="GDScript_y7qra"]
+script/source = "extends CharacterBody2D
+
+
+const SPEED = 300.0
+const colors = [Color(1,0,0), Color(0,1,0), Color(0,0,1)]
+var color_selected = 0
+
+func _physics_process(delta: float)-> void:
+	# Get the input direction and handle the movement/deceleration.
+	# As good practice, you should replace UI actions with custom gameplay actions.
+	var direction_x = Input.get_axis(\"move_left\", \"move_right\")
+	if direction_x:
+		velocity.x = direction_x * SPEED
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+		
+	var direction_y = Input.get_axis(\"move_up\", \"move_down\")
+	if direction_y:
+		velocity.y = direction_y * SPEED
+	else:
+		velocity.y = move_toward(velocity.y, 0, SPEED)
+
+	move_and_slide()
+
+func _input(event: InputEvent) -> void:
+	if event.is_action_pressed(\"color_left\"):
+		#El +len(colors previene que en 0 el indice cambie a -1)
+		color_selected = (color_selected-1+len(colors))%len(colors)
+	elif event.is_action_pressed(\"color_right\"):
+		color_selected = (color_selected+1)%len(colors)
+	
+	if event.is_action_pressed(\"color_left\") or event.is_action_pressed(\"color_right\"):
+		$\"Meow-knightIdle\".modulate = colors[color_selected]
+"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hlrpa"]
 size = Vector2(14, 16)
 
-[node name="CharacterBody2D" type="CharacterBody2D"]
+[sub_resource type="Animation" id="Animation_jcqxt"]
+resource_name = "idle"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Meow-knightIdle:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.166, 0.33, 0.5, 0.667, 0.833),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3, 4, 5]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Meow-knightIdle:texture")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(),
+"transitions": PackedFloat32Array(),
+"update": 1,
+"values": []
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6mh4w"]
+_data = {
+"idle": SubResource("Animation_jcqxt")
+}
+
+[sub_resource type="AnimationRootNode" id="AnimationRootNode_fw41y"]
+
+[node name="Knight" type="CharacterBody2D"]
+script = SubResource("GDScript_y7qra")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(-1, 0)
@@ -17,3 +88,10 @@ texture = ExtResource("1_vgvx0")
 vframes = 6
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_6mh4w")
+}
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationRootNode_fw41y")
+anim_player = NodePath("../AnimationPlayer")
