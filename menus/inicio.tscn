@@ -1,18 +1,57 @@
-[gd_scene format=3 uid="uid://brtcp4a6l77be"]
+[gd_scene load_steps=3 format=3 uid="uid://brtcp4a6l77be"]
+
+[ext_resource type="Theme" uid="uid://c0b68rkprue16" path="res://resources/main_menu_theme.tres" id="1_hhjlj"]
+[ext_resource type="Script" path="res://menus/VBoxContainer.gd" id="2_v4gl6"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 6
+size_flags_vertical = 6
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_right = -6.10352e-05
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_hhjlj")
 
-[node name="Button" type="Button" parent="."]
-layout_mode = 0
-offset_left = 124.0
-offset_top = 151.0
-offset_right = 182.0
-offset_bottom = 182.0
-text = "JUGAR"
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+script = ExtResource("2_v4gl6")
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "Kineko"
+
+[node name="Jugar" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Jugar"
+
+[node name="Config" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Config."
+
+[node name="Creditos" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Creditos"
+
+[node name="Salir" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Salir"
