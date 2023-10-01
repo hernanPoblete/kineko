@@ -107,4 +107,5 @@ anim_player = NodePath("../AnimationPlayer")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Control" parent="CanvasLayer" instance=ExtResource("2_53krn")]
+process_mode = 3
 offset_top = 1.0
