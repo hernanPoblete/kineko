@@ -1,0 +1,120 @@
+[gd_scene load_steps=2 format=3 uid="uid://4fj1a6lqches"]
+
+[ext_resource type="Script" path="res://menus/color_menu.gd" id="1_eutrv"]
+
+[node name="colors" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_eutrv")
+
+[node name="pickers" type="VBoxContainer" parent="."]
+layout_mode = 1
+offset_right = 415.0
+offset_bottom = 896.0
+scale = Vector2(0.8, 0.8)
+alignment = 1
+metadata/_edit_lock_ = true
+
+[node name="Color 0" type="ColorPicker" parent="pickers"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+alignment = 1
+edit_alpha = false
+color_mode = 1
+can_add_swatches = false
+sampler_visible = false
+color_modes_visible = false
+sliders_visible = false
+hex_visible = false
+presets_visible = false
+
+[node name="Color 1" type="ColorPicker" parent="pickers"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+alignment = 1
+edit_alpha = false
+can_add_swatches = false
+sampler_visible = false
+color_modes_visible = false
+sliders_visible = false
+hex_visible = false
+presets_visible = false
+
+[node name="Color 2" type="ColorPicker" parent="pickers"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 8
+alignment = 1
+edit_alpha = false
+color_mode = 1
+can_add_swatches = false
+sampler_visible = false
+color_modes_visible = false
+sliders_visible = false
+hex_visible = false
+presets_visible = false
+
+[node name="preview" type="Control" parent="."]
+custom_minimum_size = Vector2(150, 150)
+layout_mode = 1
+anchor_left = 0.297656
+anchor_top = 0.4125
+anchor_right = 0.998438
+anchor_bottom = 0.997222
+metadata/_edit_use_anchors_ = true
+
+[node name="0" type="ColorRect" parent="preview"]
+layout_mode = 2
+offset_left = 299.0
+offset_top = -100.0
+offset_right = 449.0
+offset_bottom = 50.0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="1" type="ColorRect" parent="preview"]
+layout_mode = 0
+offset_left = 304.0
+offset_top = 219.0
+offset_right = 454.0
+offset_bottom = 369.0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="2" type="ColorRect" parent="preview"]
+layout_mode = 0
+offset_left = 585.0
+offset_top = 69.0
+offset_right = 735.0
+offset_bottom = 219.0
+size_flags_horizontal = 0
+size_flags_vertical = 4
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 679.0
+offset_top = 21.0
+offset_right = 1261.0
+offset_bottom = 93.0
+alignment = 1
+
+[node name="si" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "SI"
+
+[node name="no" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+text = "NO"
+
+[node name="res" type="Button" parent="HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "REESTABLECER"

@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://khpg4serqb38" path="res://sprites/kineko-sprites/gorritowo.PNG" id="2_a3lg7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lkk28"]
-size = Vector2(471, 405)
+size = Vector2(233, 201)
 
 [sub_resource type="Animation" id="Animation_8a2hk"]
 resource_name = "idle"
@@ -25,16 +25,17 @@ _data = {
 script = ExtResource("1_1knl2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(-1.5, 3.5)
+position = Vector2(-0.5, 2.5)
 shape = SubResource("RectangleShape2D_lkk28")
 
 [node name="Gatete" type="Sprite2D" parent="CharacterBody2D"]
+scale = Vector2(0.5, 0.5)
 texture = ExtResource("1_jv318")
 vframes = 6
 
 [node name="Gorritowo" type="Sprite2D" parent="CharacterBody2D"]
-position = Vector2(-2, -197)
-scale = Vector2(0.627, 0.627)
+position = Vector2(-1, -88)
+scale = Vector2(0.314, 0.314)
 texture = ExtResource("2_a3lg7")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterBody2D"]
