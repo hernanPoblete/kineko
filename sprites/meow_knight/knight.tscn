@@ -1,6 +1,7 @@
-[gd_scene load_steps=7 format=3 uid="uid://b8yohrbelqc0a"]
+[gd_scene load_steps=8 format=3 uid="uid://b8yohrbelqc0a"]
 
 [ext_resource type="Texture2D" uid="uid://ueus7lytx7do" path="res://sprites/meow_knight/meow-knight_idle.png" id="1_vgvx0"]
+[ext_resource type="PackedScene" uid="uid://bs0ti308lekgu" path="res://menus/Pause_Menu.tscn" id="2_53krn"]
 
 [sub_resource type="GDScript" id="GDScript_y7qra"]
 script/source = "extends CharacterBody2D
@@ -95,3 +96,8 @@ libraries = {
 [node name="AnimationTree" type="AnimationTree" parent="."]
 tree_root = SubResource("AnimationRootNode_fw41y")
 anim_player = NodePath("../AnimationPlayer")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" parent="CanvasLayer" instance=ExtResource("2_53krn")]
+offset_top = 1.0
