@@ -41,7 +41,8 @@ text = "Kineko"
 [node name="Jugar" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
-text = "Continuar"
+text = "Jugar
+"
 
 [node name="Config" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer"]
 unique_name_in_owner = true

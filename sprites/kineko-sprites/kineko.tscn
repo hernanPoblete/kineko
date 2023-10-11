@@ -1,20 +1,86 @@
-[gd_scene load_steps=8 format=3 uid="uid://bndhsad4go7br"]
+[gd_scene load_steps=9 format=3 uid="uid://bvktdldsnypm6"]
 
 [ext_resource type="Script" path="res://sprites/kineko-sprites/CharacterBody2D.gd" id="1_1knl2"]
-[ext_resource type="Texture2D" uid="uid://cls71ebe5r7tj" path="res://sprites/kineko-sprites/gatete.png" id="1_jv318"]
-[ext_resource type="Texture2D" uid="uid://khpg4serqb38" path="res://sprites/kineko-sprites/gorritowo.PNG" id="2_a3lg7"]
+[ext_resource type="Texture2D" uid="uid://chb6upxiys4ca" path="res://sprites/kineko-sprites/sleepy_calico.png" id="2_yaky2"]
+[ext_resource type="Texture2D" uid="uid://dxjk0gu6ypy5f" path="res://sprites/kineko-sprites/gorrito.png" id="3_6bfhb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_lkk28"]
 size = Vector2(471, 405)
 
+[sub_resource type="Animation" id="Animation_o7alt"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Gatete:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [1]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Gorritowo:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
 [sub_resource type="Animation" id="Animation_8a2hk"]
 resource_name = "idle"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Gatete:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.171605),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_yaky2")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Gatete:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(-0.2, -0.1, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Gorritowo:frame")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(-0.2, -0.1, 0.1, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
 
 [sub_resource type="Animation" id="Animation_aafyn"]
 resource_name = "new_animation"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_woaf2"]
 _data = {
+"RESET": SubResource("Animation_o7alt"),
 "idle": SubResource("Animation_8a2hk"),
 "new_animation": SubResource("Animation_aafyn")
 }
@@ -25,17 +91,22 @@ _data = {
 script = ExtResource("1_1knl2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(-1.5, 3.5)
+position = Vector2(0, 2)
+scale = Vector2(1.5, 1.5)
 shape = SubResource("RectangleShape2D_lkk28")
 
 [node name="Gatete" type="Sprite2D" parent="CharacterBody2D"]
-texture = ExtResource("1_jv318")
-vframes = 6
+position = Vector2(1, -39)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("2_yaky2")
+vframes = 4
+frame = 1
 
 [node name="Gorritowo" type="Sprite2D" parent="CharacterBody2D"]
-position = Vector2(-2, -197)
-scale = Vector2(0.627, 0.627)
-texture = ExtResource("2_a3lg7")
+position = Vector2(3, -227)
+scale = Vector2(1.5, 1.5)
+texture = ExtResource("3_6bfhb")
+vframes = 4
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterBody2D"]
 libraries = {

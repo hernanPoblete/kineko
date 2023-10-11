@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://du3tusvok5hva"
-path="res://.godot/imported/meow-knight_attack_1.png-56f713fbd3232d825228dc96ead65af0.ctex"
+uid="uid://cru0f4emcf6c3"
+path="res://.godot/imported/41 sin título_20231002114001.png-12b6d7b8090ef628cfa70946b11f7ae7.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/meow_knight/meow-knight_attack_1.png"
-dest_files=["res://.godot/imported/meow-knight_attack_1.png-56f713fbd3232d825228dc96ead65af0.ctex"]
+source_file="res://sprites/kineko-sprites/41 sin título_20231002114001.png"
+dest_files=["res://.godot/imported/41 sin título_20231002114001.png-12b6d7b8090ef628cfa70946b11f7ae7.ctex"]
 
 [params]
 

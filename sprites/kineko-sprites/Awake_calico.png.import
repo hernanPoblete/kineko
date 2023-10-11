@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://e765qb5xxp2h"
-path="res://.godot/imported/meow-knight_attack_4.png-b4cffb09c31406245243a2f69ab7fe43.ctex"
+uid="uid://dyv1frxve0sgm"
+path="res://.godot/imported/Awake_calico.png-e9d80e27c53d2e3237481013350e9e9a.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://sprites/meow_knight/meow-knight_attack_4.png"
-dest_files=["res://.godot/imported/meow-knight_attack_4.png-b4cffb09c31406245243a2f69ab7fe43.ctex"]
+source_file="res://sprites/kineko-sprites/Awake_calico.png"
+dest_files=["res://.godot/imported/Awake_calico.png-e9d80e27c53d2e3237481013350e9e9a.ctex"]
 
 [params]
 
