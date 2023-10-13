@@ -1,18 +1,17 @@
 [gd_scene load_steps=3 format=3 uid="uid://ddwjuvwwphlob"]
 
-[ext_resource type="PackedScene" uid="uid://b8yohrbelqc0a" path="res://sprites/meow_knight/knight.tscn" id="1_d5p2i"]
+[ext_resource type="PackedScene" uid="uid://bmexwr4daoes1" path="res://sprites/meow_knight/knight.tscn" id="1_d5p2i"]
 [ext_resource type="PackedScene" uid="uid://cp2tdf1qbyd8o" path="res://sprites/rocky_roads/floor.tscn" id="2_agh0h"]
 
 [node name="Node2D" type="Node2D"]
 
 [node name="Knight" parent="." instance=ExtResource("1_d5p2i")]
-position = Vector2(16, 30)
-
-[node name="StaticBody2D" parent="." instance=ExtResource("2_agh0h")]
-position = Vector2(-38, 81)
 
 [node name="StaticBody2D2" parent="." instance=ExtResource("2_agh0h")]
 position = Vector2(-22, 81)
+
+[node name="StaticBody2D" parent="." instance=ExtResource("2_agh0h")]
+position = Vector2(-37, 81)
 
 [node name="StaticBody2D3" parent="." instance=ExtResource("2_agh0h")]
 position = Vector2(-6, 81)
