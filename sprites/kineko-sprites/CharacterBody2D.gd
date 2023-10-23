@@ -11,8 +11,6 @@ var rest = 0
 
 func _ready():
 	animation_tree.active = true
-
-func _ready():
 	ColorGlobal.ColorGlobal = color_selected
 
 func _physics_process(delta: float)-> void:

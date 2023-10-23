@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://bvktdldsnypm6"]
+[gd_scene load_steps=16 format=3 uid="uid://bvktdldsnypm6"]
 
 [ext_resource type="Script" path="res://sprites/kineko-sprites/CharacterBody2D.gd" id="1_1knl2"]
 [ext_resource type="Texture2D" uid="uid://chb6upxiys4ca" path="res://sprites/kineko-sprites/sleepy_calico.png" id="2_yaky2"]
@@ -13,50 +13,26 @@ length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Gatete:frame")
+tracks/0/path = NodePath("Gatete:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
+"values": [ExtResource("2_yaky2")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Gorritowo:frame")
+tracks/1/path = NodePath("Gatete:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
-}
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Gatete:texture")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("2_yaky2")]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Gorritowo:texture")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [ExtResource("3_6bfhb")]
+"values": [3]
 }
 
 [sub_resource type="Animation" id="Animation_8a2hk"]
@@ -160,7 +136,25 @@ _data = {
 "run": SubResource("Animation_aafyn")
 }
 
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_b52l0"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_4h50i"]
+animation = &"run"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_npm0m"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ymgr3"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_sog1r"]
+advance_mode = 2
+
 [sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_82k41"]
+states/idle/node = SubResource("AnimationNodeAnimation_b52l0")
+states/idle/position = Vector2(410.815, 98)
+states/run/node = SubResource("AnimationNodeAnimation_4h50i")
+states/run/position = Vector2(622.815, 98)
+transitions = ["idle", "run", SubResource("AnimationNodeStateMachineTransition_npm0m"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_ymgr3"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_sog1r")]
 graph_offset = Vector2(33.8151, 0)
 
 [node name="kineko" type="Node2D"]
@@ -176,14 +170,14 @@ scale = Vector2(1.5, 1.5)
 shape = SubResource("RectangleShape2D_lkk28")
 
 [node name="Gatete" type="Sprite2D" parent="CharacterBody2D"]
-position = Vector2(16, -15)
+position = Vector2(16, 56)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("2_yaky2")
 vframes = 4
-frame = 1
+frame = 3
 
 [node name="Gorritowo" type="Sprite2D" parent="CharacterBody2D"]
-position = Vector2(20, -203)
+position = Vector2(20, -164)
 scale = Vector2(1.5, 1.5)
 texture = ExtResource("3_6bfhb")
 vframes = 4
