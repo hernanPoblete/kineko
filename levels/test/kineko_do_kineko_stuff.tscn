@@ -1,8 +1,8 @@
 [gd_scene load_steps=2 format=3 uid="uid://s11mfgs31mme"]
 
-[ext_resource type="PackedScene" uid="uid://bndhsad4go7br" path="res://sprites/kineko-sprites/kineko.tscn" id="1_57ob3"]
+[ext_resource type="PackedScene" uid="uid://bvktdldsnypm6" path="res://sprites/kineko-sprites/kineko.tscn" id="1_57ob3"]
 
 [node name="kineko_do_kineko_stuff" type="Node2D"]
 
 [node name="kineko" parent="." instance=ExtResource("1_57ob3")]
-position = Vector2(330, 435)
+position = Vector2(-1, 0)

@@ -5,6 +5,11 @@ const SPEED = 1000.0
 const colors = [Color(0.95686, 0.81176, 0.70588), Color(0,1,0), Color(0,0,1)]
 var color_selected = -1
 var rest = 0
+@onready var animation_tree: AnimationTree = $AnimationTree
+@onready var playback = animation_tree.get("parameters/playback")
+
+func _ready():
+	animation_tree.active = true
 
 func _physics_process(delta: float)-> void:
 	var direction_x = Input.get_axis("move_left", "move_right")
@@ -28,6 +33,11 @@ func _physics_process(delta: float)-> void:
 		rest = rest-1
 
 	move_and_slide()
+	#animacion
+	if abs(velocity.x) > 10 or abs(velocity.y)>10:
+		playback.travel("run")
+	else:
+		playback.travel("idle")
 
 func _input(event: InputEvent) -> void:
 	if rest == 0:
