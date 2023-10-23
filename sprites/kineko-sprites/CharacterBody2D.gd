@@ -2,9 +2,9 @@ class_name kineko
 extends CharacterBody2D
 
 
-const SPEED = 1000.0
+const SPEED = 300.0
 const push_speed = 500
-const colors = [Color(0.95686, 0.81176, 0.70588), Color(0,1,0), Color(0,0,1)]
+const colors = [Color(1,0,0), Color(0,1,0), Color(0,0,1)]
 var color_selected = -1
 var rest = 0
 var cel = preload("res://tiles/Cosas nabil uwu/celebracion.tscn")
@@ -21,6 +21,7 @@ func _physics_process(delta: float)-> void:
 		velocity.x = direction_x * SPEED
 	else:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
+	
 		
 
 	if direction_y:
