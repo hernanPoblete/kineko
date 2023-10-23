@@ -1,30 +1,84 @@
-[gd_scene load_steps=9 format=3 uid="uid://bvktdldsnypm6"]
+[gd_scene load_steps=17 format=3 uid="uid://cxgypa13p5itb"]
 
-[ext_resource type="Script" path="res://sprites/kineko-sprites/CharacterBody2D.gd" id="1_1knl2"]
-[ext_resource type="Texture2D" uid="uid://chb6upxiys4ca" path="res://sprites/kineko-sprites/sleepy_calico.png" id="2_yaky2"]
-[ext_resource type="Texture2D" uid="uid://dxjk0gu6ypy5f" path="res://sprites/kineko-sprites/gorrito.png" id="3_6bfhb"]
+[ext_resource type="Texture2D" uid="uid://chb6upxiys4ca" path="res://sprites/kineko-sprites/sleepy_calico.png" id="1_iqe4u"]
+[ext_resource type="Texture2D" uid="uid://dxjk0gu6ypy5f" path="res://sprites/kineko-sprites/gorrito.png" id="2_dnm3h"]
+[ext_resource type="Texture2D" uid="uid://dyv1frxve0sgm" path="res://sprites/kineko-sprites/Awake_calico.png" id="3_dnyn7"]
+[ext_resource type="PackedScene" uid="uid://bs0ti308lekgu" path="res://menus/Pause_Menu.tscn" id="4_7rdge"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_lkk28"]
-size = Vector2(233, 201)
+[sub_resource type="GDScript" id="GDScript_y7qra"]
+script/source = "extends CharacterBody2D
 
-[sub_resource type="Animation" id="Animation_o7alt"]
+
+const SPEED = 300.0
+const colors = [Color(1,0,0), Color(0,1,0), Color(0,0,1)]
+var color_selected = 0
+var rest = 0
+@onready var kineko_sprite: AnimationPlayer = $AnimationPlayer
+@onready var animation_tree: AnimationTree = $AnimationTree
+@onready var playback = animation_tree.get(\"parameters/playback\")
+
+	
+func _ready():
+	$\"Gorrito\".modulate = colors[color_selected]
+	animation_tree.active = true
+	
+func _physics_process(delta: float)-> void:
+	# Get the input direction and handle the movement/deceleration.
+	# As good practice, you should replace UI actions with custom gameplay actions.
+	var direction_x = Input.get_axis(\"move_left\", \"move_right\")
+	var direction_y = Input.get_axis(\"move_up\", \"move_down\")	
+	if direction_x or direction_y:
+		velocity.x = direction_x * SPEED / sqrt(direction_x**2 + direction_y**2)
+		velocity.y = direction_y * SPEED / sqrt(direction_x**2 + direction_y**2)
+	else:
+		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.y = move_toward(velocity.y, 0, SPEED)
+
+
+	
+	if rest !=0:
+		rest = rest-1
+	move_and_slide()
+	#animacion
+	if abs(velocity.x) > 10 or abs(velocity.y)>10:
+		playback.travel(\"run\")
+	else:
+		playback.travel(\"idle\")
+		
+func _input(event: InputEvent) -> void:
+	if rest == 0:
+		if event.is_action_pressed(\"color_left\"):
+			#El +len(colors previene que en 0 el indice cambie a -1)
+			color_selected = (color_selected-1+len(colors))%len(colors)
+		elif event.is_action_pressed(\"color_right\"):
+			color_selected = (color_selected+1)%len(colors)
+		
+		if event.is_action_pressed(\"color_left\") or event.is_action_pressed(\"color_right\"):
+			$\"Gorrito\".modulate = colors[color_selected]
+			rest = rest + 60
+"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hlrpa"]
+size = Vector2(104, 96)
+
+[sub_resource type="Animation" id="Animation_7la3d"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Gatete:frame")
+tracks/0/path = NodePath("gatito:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [1]
+"values": [ExtResource("1_iqe4u")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Gorritowo:frame")
+tracks/1/path = NodePath("gatito:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -33,31 +87,55 @@ tracks/1/keys = {
 "update": 1,
 "values": [0]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Gorrito:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_dnm3h")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Gorrito:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
 
-[sub_resource type="Animation" id="Animation_8a2hk"]
+[sub_resource type="Animation" id="Animation_jcqxt"]
 resource_name = "idle"
 length = 0.5
 loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath("Gatete:texture")
+tracks/0/path = NodePath("gatito:texture")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0.171605),
+"times": PackedFloat32Array(0.204507),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [ExtResource("2_yaky2")]
+"values": [ExtResource("1_iqe4u")]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Gatete:frame")
+tracks/1/path = NodePath("gatito:frame")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(-0.2, -0.1, 0.1, 0.3),
+"times": PackedFloat32Array(0.204507, 0.3, 0.4, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3]
@@ -65,50 +143,139 @@ tracks/1/keys = {
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath("Gorritowo:frame")
+tracks/2/path = NodePath("Gorrito:texture")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(-0.2, -0.1, 0.1, 0.3),
+"times": PackedFloat32Array(0.1),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_dnm3h")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Gorrito:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.2, 0.3, 0.4, 0.5),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [0, 1, 2, 3]
 }
 
-[sub_resource type="Animation" id="Animation_aafyn"]
-resource_name = "new_animation"
+[sub_resource type="Animation" id="Animation_mjyhf"]
+resource_name = "run"
+length = 0.5
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("gatito:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("3_dnyn7")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("gatito:frame")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Gorrito:texture")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.393041),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [ExtResource("2_dnm3h")]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Gorrito:frame")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
 
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_woaf2"]
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6mh4w"]
 _data = {
-"RESET": SubResource("Animation_o7alt"),
-"idle": SubResource("Animation_8a2hk"),
-"new_animation": SubResource("Animation_aafyn")
+"RESET": SubResource("Animation_7la3d"),
+"idle": SubResource("Animation_jcqxt"),
+"run": SubResource("Animation_mjyhf")
 }
 
-[node name="kineko" type="Node2D"]
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_b0axk"]
+animation = &"idle"
 
-[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
-script = ExtResource("1_1knl2")
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_r0rlw"]
+animation = &"run"
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
-position = Vector2(0, 2)
-scale = Vector2(1.5, 1.5)
-shape = SubResource("RectangleShape2D_lkk28")
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_jhfor"]
 
-[node name="Gatete" type="Sprite2D" parent="CharacterBody2D"]
-position = Vector2(1, -39)
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("2_yaky2")
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_wxk7x"]
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_l4vuv"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_adhpn"]
+states/idle/node = SubResource("AnimationNodeAnimation_b0axk")
+states/idle/position = Vector2(409, 69)
+states/run/node = SubResource("AnimationNodeAnimation_r0rlw")
+states/run/position = Vector2(585, 69)
+transitions = ["idle", "run", SubResource("AnimationNodeStateMachineTransition_jhfor"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_wxk7x"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_l4vuv")]
+
+[node name="Knight" type="CharacterBody2D"]
+script = SubResource("GDScript_y7qra")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0, -16)
+shape = SubResource("RectangleShape2D_hlrpa")
+
+[node name="gatito" type="Sprite2D" parent="."]
+position = Vector2(0, -12)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("1_iqe4u")
 vframes = 4
-frame = 1
 
-[node name="Gorritowo" type="Sprite2D" parent="CharacterBody2D"]
-position = Vector2(3, -227)
-scale = Vector2(1.5, 1.5)
-texture = ExtResource("3_6bfhb")
+[node name="Gorrito" type="Sprite2D" parent="."]
+position = Vector2(7.62939e-06, -38)
+scale = Vector2(0.2, 0.2)
+texture = ExtResource("2_dnm3h")
 vframes = 4
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="CharacterBody2D"]
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+speed_scale = 0.2
 libraries = {
-"": SubResource("AnimationLibrary_woaf2")
+"": SubResource("AnimationLibrary_6mh4w")
 }
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Control" parent="CanvasLayer" instance=ExtResource("4_7rdge")]
+offset_top = 1.0
+
+[node name="AnimationTree" type="AnimationTree" parent="."]
+tree_root = SubResource("AnimationNodeStateMachine_adhpn")
+anim_player = NodePath("../AnimationPlayer")
+active = true

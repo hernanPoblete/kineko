@@ -13,7 +13,7 @@ func _ready() -> void:
 	salir.pressed.connect(_on_salir_pressed)
 	
 func _on_jugar_pressed():
-	get_tree().change_scene_to_file("res://levels/test/knight_moves.tscn")
+	get_tree().change_scene_to_file("res://levels/test/kineko_do_kineko_stuff.tscn")
 func _on_config_pressed():
 	get_tree().change_scene_to_file("res://menus/colors.tscn")
 func _on_salir_pressed():
