@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://cv1a78jdf5qvl"]
+
+[ext_resource type="Texture2D" uid="uid://cbx5pifxgesmt" path="res://tiles/Cosas nabil uwu/victoria.png" id="1_a52sl"]
+
+[node name="Sprite2D" type="Sprite2D"]
+position = Vector2(0, -750)
+scale = Vector2(2, 2)
+texture = ExtResource("1_a52sl")

@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dhy7oevofu45l"]
+
+[ext_resource type="Texture2D" uid="uid://1md0h1tvfjrx" path="res://tiles/Cosas nabil uwu/verde.png" id="1_66lqx"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tsb3j"]
+size = Vector2(16, 16)
+
+[node name="MURO" type="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_tsb3j")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_66lqx")

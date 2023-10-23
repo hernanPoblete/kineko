@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://581h8etbrqvs"]
 
-[ext_resource type="Texture2D" uid="uid://5r22njtvljnx" path="res://tiles/Cosas nabil uwu/muro.png" id="1_5nbxv"]
 [ext_resource type="Script" path="res://tiles/Cosas nabil uwu/muros_rojos.gd" id="1_tcmv6"]
+[ext_resource type="Texture2D" uid="uid://dje587vuvnofp" path="res://tiles/Cosas nabil uwu/rojo.png" id="2_15qd2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_0m30p"]
 size = Vector2(14, 14)
@@ -17,4 +17,4 @@ shape = SubResource("RectangleShape2D_0m30p")
 [node name="Sprite2D" type="Sprite2D" parent="."]
 light_mask = 128
 visibility_layer = 128
-texture = ExtResource("1_5nbxv")
+texture = ExtResource("2_15qd2")

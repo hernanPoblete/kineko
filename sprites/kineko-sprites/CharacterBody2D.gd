@@ -3,9 +3,11 @@ extends CharacterBody2D
 
 
 const SPEED = 1000.0
+const push_speed = 500
 const colors = [Color(0.95686, 0.81176, 0.70588), Color(0,1,0), Color(0,0,1)]
 var color_selected = -1
 var rest = 0
+var cel = preload("res://tiles/Cosas nabil uwu/celebracion.tscn")
 
 func _ready():
 	ColorGlobal.ColorGlobal = color_selected
@@ -32,6 +34,9 @@ func _physics_process(delta: float)-> void:
 		rest = rest-1
 
 	move_and_slide()
+	
+#	if abs(velocity.x) > 0 or abs(velocity.y) > 0:
+#		check_box_collision(velocity)
 
 func _input(event: InputEvent) -> void:
 	if rest == 0:
@@ -47,4 +52,13 @@ func _input(event: InputEvent) -> void:
 			$"Gorritowo".modulate = colors[color_selected]
 			rest = rest + 60
 func kill():
-	position = Vector2(1050,40)
+	position = Vector2(0,0)
+	
+func win():
+	var object = cel.instantiate()
+	add_child(object)
+
+#func check_box_collision(velocity):
+#	var box : = get_slide_collision(0).collider as box
+#	if box:
+#		box.push(push_speed * velocity)

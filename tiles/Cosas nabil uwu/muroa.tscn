@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://yspwpl2ycw32"]
+
+[ext_resource type="Texture2D" uid="uid://h8r5tixjpv67" path="res://tiles/Cosas nabil uwu/azul.png" id="1_3bueo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tsb3j"]
+size = Vector2(16, 16)
+
+[node name="muroa" type="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_tsb3j")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_3bueo")
