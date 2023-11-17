@@ -38,9 +38,9 @@ func _process(delta):
 	RenderingServer.set_default_clear_color((color[0]+color[1]+color[2]).inverted()/3)
 
 func reset_colores():
-	$"pickers/Color 0".color = Color(0,0,1)
+	$"pickers/Color 0".color = Color(1,0,0)
 	$"pickers/Color 1".color = Color(0,1,0)
-	$"pickers/Color 2".color = Color(1,0,0)
+	$"pickers/Color 2".color = Color(0,0,1)
 func guardar_colores():
 	var new_Colors = [
 		[$"pickers/Color 0".color[0], $"pickers/Color 0".color[1], $"pickers/Color 0".color[2]],

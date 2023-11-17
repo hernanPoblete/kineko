@@ -9,6 +9,8 @@ var colors = color_file.map(func(x): return Color(x[0], x[1], x[2]))
 var color_selected = -1
 var rest = 0
 var cel = preload("res://tiles/Cosas nabil uwu/celebracion.tscn")
+@onready var animation_tree: AnimationTree = $AnimationTree
+@onready var playback = animation_tree.get("parameters/playback")
 
 func _ready():
 	ColorGlobal.ColorGlobal = color_selected
@@ -25,6 +27,10 @@ func _physics_process(delta: float)-> void:
 		rest = rest-1
 
 	move_and_slide()
+	if abs(velocity.x) > 10 or abs(velocity.y)>10:
+		playback.travel("run")
+	else:
+		playback.travel("idle")	
 	
 #	if abs(velocity.x) > 0 or abs(velocity.y) > 0:
 #		check_box_collision(velocity)
