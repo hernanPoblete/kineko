@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://djfg85ypv5ji1"]
 
 [ext_resource type="PackedScene" uid="uid://doptnwxcfibge" path="res://tiles/tile_map.tscn" id="1_yecpg"]
-[ext_resource type="PackedScene" uid="uid://s11mfgs31mme" path="res://levels/test/kineko_do_kineko_stuff.tscn" id="2_hrqsn"]
+[ext_resource type="PackedScene" uid="uid://bndhsad4go7br" path="res://sprites/kineko-sprites/kineko.tscn" id="3_ajcu4"]
 [ext_resource type="PackedScene" uid="uid://34bgr1g4s36q" path="res://tiles/Cosas nabil uwu/huevo.tscn" id="3_mvip7"]
 
 [sub_resource type="GDScript" id="GDScript_behis"]
@@ -39,8 +39,8 @@ script = SubResource("GDScript_behis")
 position = Vector2(37.7737, -10.0575)
 layer_0/tile_data = PackedInt32Array(1769499, 65536, 2, 1900571, 65536, 2, 1835035, 65536, 2, 1966107, 65536, 2, 2031644, 65536, 2, 2031645, 65536, 2, 2031646, 65536, 2, 1966111, 65536, 2, 1900575, 65536, 2, 1835039, 65536, 2, 1769503, 65536, 2, 1769506, 65536, 0, 1835043, 65536, 0, 1900579, 65536, 0, 1966116, 65536, 0, 2031653, 65536, 0, 1966118, 65536, 0, 1900583, 65536, 0, 1835047, 65536, 0, 1966120, 65536, 0, 2031657, 65536, 0, 1966122, 65536, 0, 1900587, 65536, 0, 1835051, 65536, 0, 1769516, 65536, 0, 1769519, 327680, 2, 1835055, 327680, 2, 1900591, 327680, 2, 1966127, 327680, 2, 2031664, 327680, 2, 2031665, 327680, 2, 2031666, 327680, 2, 1966131, 327680, 2, 1900595, 327680, 2, 1835059, 327680, 2, 1769523, 327680, 2)
 
-[node name="kineko_do_kineko_stuff" parent="." instance=ExtResource("2_hrqsn")]
-position = Vector2(642, 343)
-
 [node name="victory" parent="." instance=ExtResource("3_mvip7")]
 position = Vector2(1208, 150)
+
+[node name="kineko" parent="." instance=ExtResource("3_ajcu4")]
+position = Vector2(674, 353)
