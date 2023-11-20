@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgy3knlvcs5jx"]
+
+[ext_resource type="Texture2D" uid="uid://5r22njtvljnx" path="res://tiles/Cosas nabil uwu/muro.png" id="1_8rxon"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tsb3j"]
+size = Vector2(16, 16)
+
+[node name="MURO" type="StaticBody2D"]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_tsb3j")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("1_8rxon")

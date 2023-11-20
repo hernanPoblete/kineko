@@ -5,4 +5,4 @@
 [node name="kineko_do_kineko_stuff" type="Node2D"]
 
 [node name="kineko" parent="." instance=ExtResource("1_57ob3")]
-position = Vector2(-1, 0)
+position = Vector2(7, 49)

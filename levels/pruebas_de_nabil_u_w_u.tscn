@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://crr8ve8gl6wrl"]
+
+[ext_resource type="PackedScene" uid="uid://bvktdldsnypm6" path="res://sprites/kineko-sprites/kineko.tscn" id="2_fvnlr"]
+[ext_resource type="PackedScene" uid="uid://doptnwxcfibge" path="res://tiles/tile_map.tscn" id="2_lwjqu"]
+
+[node name="Pruebas de Nabil U w U" type="Node2D"]
+
+[node name="TileMap" parent="." instance=ExtResource("2_lwjqu")]
+layer_0/tile_data = PackedInt32Array(458825, 65536, 0, 589897, 65536, 2, 1310794, 65536, 0, 1441866, 65536, 2, 2162762, 65536, 0, 2293834, 65536, 2)
+
+[node name="kineko" parent="." instance=ExtResource("2_fvnlr")]
