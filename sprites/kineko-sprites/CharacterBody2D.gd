@@ -20,9 +20,9 @@ func _physics_process(delta: float)-> void:
 	var direction_x = Input.get_axis("move_left", "move_right")
 	var direction_y = Input.get_axis("move_up", "move_down")	
 	
-	var uncrasher = max(sqrt(direction_x**2 + direction_y**2), 1)
-	velocity.x = direction_x * SPEED / uncrasher
-	velocity.y = direction_y * SPEED / uncrasher
+	if (direction_x + direction_y):
+		velocity.x = direction_x * SPEED/sqrt(direction_x**2 + direction_y**2)
+		velocity.y = direction_y * SPEED/sqrt(direction_x**2 + direction_y**2)
 	if rest !=0:
 		rest = rest-1
 
