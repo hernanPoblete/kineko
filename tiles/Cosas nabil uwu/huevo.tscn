@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://34bgr1g4s36q"]
+
+[ext_resource type="Script" path="res://tiles/Cosas nabil uwu/victory.gd" id="1_xvfek"]
+[ext_resource type="Texture2D" uid="uid://dkddxqgqn71au" path="res://tiles/sprout lands - sprites - basic pack/Objects/Egg item.png" id="2_2l7cd"]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vr6as"]
+radius = 7.0
+height = 16.0
+
+[node name="victory" type="Area2D"]
+script = ExtResource("1_xvfek")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+scale = Vector2(2, 2)
+shape = SubResource("CapsuleShape2D_vr6as")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(2, 2)
+texture = ExtResource("2_2l7cd")
