@@ -258,12 +258,14 @@ position = Vector2(0, -12)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("1_7n5r8")
 vframes = 4
+frame = 3
 
 [node name="Gorrito" type="Sprite2D" parent="."]
 position = Vector2(7.62939e-06, -38)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("2_3epjc")
 vframes = 4
+frame = 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 speed_scale = 0.2
