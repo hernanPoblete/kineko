@@ -15,7 +15,7 @@ func _ready():
 
 func _physics_process(delta: float)-> void:
 	var direction_x = Input.get_axis("move_left", "move_right")
-	var direction_y = Input.get_axis("move_up", "move_down")	
+	var direction_y = Input.get_axis("move_up", "move_down")
 	
 
 	if direction_x:
@@ -56,3 +56,4 @@ func _input(event: InputEvent) -> void:
 			rest = rest + 60
 func kill():
 	position = Vector2(1050,40)
+	playback.travel("dead")
