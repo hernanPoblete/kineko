@@ -1,7 +1,7 @@
 [gd_scene load_steps=5 format=3 uid="uid://uiu8xuicl84f"]
 
 [ext_resource type="PackedScene" uid="uid://doptnwxcfibge" path="res://tiles/tile_map.tscn" id="2_kbwfn"]
-[ext_resource type="PackedScene" uid="uid://bndhsad4go7br" path="res://sprites/kineko-sprites/kineko.tscn" id="2_mb3nf"]
+[ext_resource type="PackedScene" uid="uid://bvktdldsnypm6" path="res://sprites/kineko-sprites/kineko.tscn" id="2_mb3nf"]
 [ext_resource type="PackedScene" uid="uid://34bgr1g4s36q" path="res://tiles/Cosas nabil uwu/huevo.tscn" id="3_q7u3r"]
 
 [sub_resource type="GDScript" id="GDScript_behis"]
