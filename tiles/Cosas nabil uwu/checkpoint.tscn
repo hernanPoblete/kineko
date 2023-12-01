@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://f3t4m8rmwlik"]
+
+[ext_resource type="Script" path="res://Checkpoint.gd" id="1_fw314"]
+[ext_resource type="Texture2D" uid="uid://gxx62gtpvsby" path="res://tiles/Cosas nabil uwu/checkpoint.png" id="2_7ht2w"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_17bkh"]
+radius = 5.0
+
+[node name="Checkpoint" type="Area2D"]
+collision_layer = 112
+collision_mask = 112
+script = ExtResource("1_fw314")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_7ht2w")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_17bkh")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://yspwpl2ycw32"]
+
+[ext_resource type="Script" path="res://tiles/Cosas nabil uwu/muroa.gd" id="1_l0h1j"]
+[ext_resource type="Texture2D" uid="uid://5sdogoqs5k4l" path="res://tiles/Cosas nabil uwu/blanco.png" id="2_nseyr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_tsb3j"]
+size = Vector2(16, 16)
+
+[node name="muroa" type="StaticBody2D"]
+script = ExtResource("1_l0h1j")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_tsb3j")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_nseyr")

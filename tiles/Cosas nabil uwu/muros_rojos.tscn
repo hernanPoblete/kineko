@@ -1,0 +1,30 @@
+[gd_scene load_steps=5 format=3 uid="uid://581h8etbrqvs"]
+
+[ext_resource type="Script" path="res://tiles/Cosas nabil uwu/muros_rojos.gd" id="1_tcmv6"]
+[ext_resource type="Texture2D" uid="uid://5sdogoqs5k4l" path="res://tiles/Cosas nabil uwu/blanco.png" id="2_r5lu0"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0m30p"]
+size = Vector2(14, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fltjo"]
+size = Vector2(16, 16)
+
+[node name="Muros rojos" type="Area2D"]
+collision_layer = 128
+collision_mask = 128
+script = ExtResource("1_tcmv6")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_0m30p")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+light_mask = 128
+visibility_layer = 128
+texture = ExtResource("2_r5lu0")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 16
+collision_mask = 16
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_fltjo")

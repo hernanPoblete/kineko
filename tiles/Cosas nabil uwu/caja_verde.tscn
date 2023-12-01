@@ -1,0 +1,72 @@
+[gd_scene load_steps=9 format=3 uid="uid://e2d056unbuh3"]
+
+[ext_resource type="Script" path="res://CajaVerde.gd" id="1_sikcj"]
+[ext_resource type="Texture2D" uid="uid://chpv2y6lxmbkd" path="res://tiles/Cosas nabil uwu/Caja.png" id="2_iepje"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_uq10e"]
+size = Vector2(14, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_qqsat"]
+size = Vector2(1, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_p0xm2"]
+size = Vector2(1, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_nmqxc"]
+size = Vector2(14, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8hh8j"]
+size = Vector2(14, 1)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_mavnv"]
+size = Vector2(14, 14)
+
+[node name="CajaVerde" type="CharacterBody2D"]
+collision_layer = 80
+collision_mask = 80
+script = ExtResource("1_sikcj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_iepje")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_uq10e")
+
+[node name="Area2D Izq" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D Izq"]
+position = Vector2(-7.5, 0)
+shape = SubResource("RectangleShape2D_qqsat")
+
+[node name="Area2D Der" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D Der"]
+position = Vector2(7.5, 0)
+shape = SubResource("RectangleShape2D_p0xm2")
+
+[node name="Area2D Arr" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D Arr"]
+position = Vector2(0, -7.5)
+shape = SubResource("RectangleShape2D_nmqxc")
+
+[node name="Area2D Aba" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D Aba"]
+position = Vector2(0, 7.5)
+shape = SubResource("RectangleShape2D_8hh8j")
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_mavnv")
+
+[connection signal="body_entered" from="Area2D Izq" to="." method="_on_body_entered_Izq" flags=18]
+[connection signal="body_exited" from="Area2D Izq" to="." method="_on_body_exited_Izq" flags=18]
+[connection signal="body_entered" from="Area2D Der" to="." method="_on_body_entered_Der" flags=18]
+[connection signal="body_exited" from="Area2D Der" to="." method="_on_body_exited_Der" flags=18]
+[connection signal="body_entered" from="Area2D Arr" to="." method="_on_body_entered_Arr" flags=18]
+[connection signal="body_exited" from="Area2D Arr" to="." method="_on_body_exited_Arr" flags=18]
+[connection signal="body_entered" from="Area2D Aba" to="." method="_on_body_entered_Aba" flags=18]
+[connection signal="body_exited" from="Area2D Aba" to="." method="_on_body_exited_Aba" flags=18]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]

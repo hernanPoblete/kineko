@@ -1,0 +1,28 @@
+[gd_scene load_steps=5 format=3 uid="uid://crhos5symg3qm"]
+
+[ext_resource type="Script" path="res://tiles/Cosas nabil uwu/Muros verdes.gd" id="1_plvkn"]
+[ext_resource type="Texture2D" uid="uid://5sdogoqs5k4l" path="res://tiles/Cosas nabil uwu/blanco.png" id="2_axqh8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_0m30p"]
+size = Vector2(14, 14)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_afkn6"]
+size = Vector2(16, 16)
+
+[node name="Muros verdes" type="Area2D"]
+collision_layer = 128
+collision_mask = 128
+script = ExtResource("1_plvkn")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_0m30p")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_axqh8")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="."]
+collision_layer = 32
+collision_mask = 32
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+shape = SubResource("RectangleShape2D_afkn6")
