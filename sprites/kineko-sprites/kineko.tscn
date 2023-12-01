@@ -1,65 +1,10 @@
 [gd_scene load_steps=17 format=3 uid="uid://bvktdldsnypm6"]
 
+[ext_resource type="Script" path="res://sprites/kineko-sprites/kineko.gd" id="1_yq7rb"]
 [ext_resource type="Texture2D" uid="uid://chb6upxiys4ca" path="res://sprites/kineko-sprites/sleepy_calico.png" id="2_yaky2"]
 [ext_resource type="Texture2D" uid="uid://dxjk0gu6ypy5f" path="res://sprites/kineko-sprites/gorrito.png" id="3_6bfhb"]
 [ext_resource type="Texture2D" uid="uid://dyv1frxve0sgm" path="res://sprites/kineko-sprites/Awake_calico.png" id="4_16y0t"]
 [ext_resource type="PackedScene" uid="uid://bs0ti308lekgu" path="res://menus/Pause_Menu.tscn" id="4_om12t"]
-
-[sub_resource type="GDScript" id="GDScript_y7qra"]
-script/source = "extends CharacterBody2D
-
-
-const SPEED = 300.0
-const push_speed = 500
-var color_file = JSON.parse_string(FileAccess.open(\"user://color_data.json\", FileAccess.READ).get_as_text())
-var colors = color_file.map(func(x): return Color(x[0], x[1], x[2]))
-var color_selected = -1
-var rest = 0
-@onready var animation_tree: AnimationTree = $AnimationTree
-@onready var playback = animation_tree.get(\"parameters/playback\")
-var sleep = 300
-
-func _ready():
-	animation_tree.active = true
-	
-func _physics_process(delta: float)-> void:
-	var direction_x = Input.get_axis(\"move_left\", \"move_right\")
-	var direction_y = Input.get_axis(\"move_up\", \"move_down\")
-	
-	if (direction_x or direction_y):
-		velocity.x = direction_x * SPEED/sqrt(direction_x**2 + direction_y**2)
-		velocity.y = direction_y * SPEED/sqrt(direction_x**2 + direction_y**2)
-		playback.travel(\"run\")
-		sleep = 300
-	else:
-		velocity.x = 0
-		velocity.y = 0
-		
-		if sleep:
-			sleep = sleep-1
-		else:
-			playback.travel(\"idle\")
-	
-	
-	
-	if rest !=0:
-		rest = rest-1
-	move_and_slide()
-
-
-
-func _input(event: InputEvent) -> void:
-	if rest == 0:
-		if event.is_action_pressed(\"color_left\"):
-			#El +len(colors previene que en 0 el indice cambie a -1)
-			color_selected = (color_selected-1+len(colors))%len(colors)
-		elif event.is_action_pressed(\"color_right\"):
-			color_selected = (color_selected+1)%len(colors)
-		
-		if event.is_action_pressed(\"color_left\") or event.is_action_pressed(\"color_right\"):
-			$\"Gorrito\".modulate = colors[color_selected]
-			rest = rest + 60
-"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hlrpa"]
 size = Vector2(104, 96)
@@ -249,10 +194,11 @@ states/run/position = Vector2(585, 69)
 transitions = ["idle", "run", SubResource("AnimationNodeStateMachineTransition_jhfor"), "run", "idle", SubResource("AnimationNodeStateMachineTransition_wxk7x"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_l4vuv")]
 
 [node name="Knight" type="CharacterBody2D"]
-script = SubResource("GDScript_y7qra")
+collision_layer = 129
+collision_mask = 129
+script = ExtResource("1_yq7rb")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(0, -16)
 shape = SubResource("RectangleShape2D_hlrpa")
 
 [node name="gatito" type="Sprite2D" parent="."]
@@ -266,6 +212,7 @@ position = Vector2(7.62939e-06, -38)
 scale = Vector2(0.2, 0.2)
 texture = ExtResource("3_6bfhb")
 vframes = 4
+frame = 1
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 speed_scale = 0.2

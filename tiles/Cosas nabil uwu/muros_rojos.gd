@@ -8,6 +8,7 @@ func _ready():
 	color = ColorGlobal.ColorGlobal
 	var object = MURO.instantiate()
 	add_child(object)
+	$"Sprite2D".modulate = ColorGlobal.Colores[0]
 
 func _on_body_entered(body):
 	if color == 1:

@@ -1,68 +1,46 @@
-[gd_scene load_steps=3 format=3 uid="uid://ddwjuvwwphlob"]
+[gd_scene load_steps=5 format=3 uid="uid://djfg85ypv5ji1"]
 
-[ext_resource type="PackedScene" uid="uid://bmexwr4daoes1" path="res://sprites/meow_knight/knight.tscn" id="1_d5p2i"]
-[ext_resource type="PackedScene" uid="uid://cp2tdf1qbyd8o" path="res://sprites/rocky_roads/floor.tscn" id="2_agh0h"]
+[ext_resource type="PackedScene" uid="uid://doptnwxcfibge" path="res://tiles/tile_map.tscn" id="1_yecpg"]
+[ext_resource type="PackedScene" uid="uid://bvktdldsnypm6" path="res://sprites/kineko-sprites/kineko.tscn" id="3_ajcu4"]
+[ext_resource type="PackedScene" uid="uid://34bgr1g4s36q" path="res://tiles/Cosas nabil uwu/huevo.tscn" id="3_mvip7"]
 
-[node name="Node2D" type="Node2D"]
+[sub_resource type="GDScript" id="GDScript_behis"]
+script/source = "extends Node2D
 
-[node name="Knight" parent="." instance=ExtResource("1_d5p2i")]
+var muros_rojos = preload(\"res://tiles/Cosas nabil uwu/muros_rojos.tscn\")
+var muros_verdes = preload(\"res://tiles/Cosas nabil uwu/muros_verdes.tscn\")
+var muros_azules = preload(\"res://tiles/Cosas nabil uwu/muros_azules.tscn\")
 
-[node name="StaticBody2D2" parent="." instance=ExtResource("2_agh0h")]
-position = Vector2(-22, 81)
+func _ready(): 
+	var tilemap = $TileMap
+	for cellpos in tilemap.get_used_cells(0):
+		var cell = tilemap.get_cell_source_id(0, cellpos)
+		if tilemap.get_tipo(cellpos) == 1:
+			var object = muros_rojos.instantiate()
+			object.position = tilemap.map_to_local(cellpos) * tilemap.scale
+			add_child(object)
+			tilemap.set_cell(0, cellpos, -1)
+		if tilemap.get_tipo(cellpos) == 2:
+			var object = muros_verdes.instantiate()
+			object.position = tilemap.map_to_local(cellpos) * tilemap.scale
+			add_child(object)
+			tilemap.set_cell(0, cellpos, -1)
+		if tilemap.get_tipo(cellpos) == 3:
+			var object = muros_azules.instantiate()
+			object.position = tilemap.map_to_local(cellpos) * tilemap.scale
+			add_child(object)
+			tilemap.set_cell(0, cellpos, -1)
+"
 
-[node name="StaticBody2D" parent="." instance=ExtResource("2_agh0h")]
-position = Vector2(-37, 81)
+[node name="Pruebas de Nabil U w U" type="Node2D"]
+script = SubResource("GDScript_behis")
 
-[node name="StaticBody2D3" parent="." instance=ExtResource("2_agh0h")]
-position = Vector2(-6, 81)
+[node name="TileMap" parent="." instance=ExtResource("1_yecpg")]
+position = Vector2(37.7737, -10.0575)
+layer_0/tile_data = PackedInt32Array(1769499, 65536, 2, 1900571, 65536, 2, 1835035, 65536, 2, 1966107, 65536, 2, 2031644, 65536, 2, 2031645, 65536, 2, 2031646, 65536, 2, 1966111, 65536, 2, 1900575, 65536, 2, 1835039, 65536, 2, 1769503, 65536, 2, 1769506, 65536, 0, 1835043, 65536, 0, 1900579, 65536, 0, 1966116, 65536, 0, 2031653, 65536, 0, 1966118, 65536, 0, 1900583, 65536, 0, 1835047, 65536, 0, 1966120, 65536, 0, 2031657, 65536, 0, 1966122, 65536, 0, 1900587, 65536, 0, 1835051, 65536, 0, 1769516, 65536, 0, 1769519, 327680, 2, 1835055, 327680, 2, 1900591, 327680, 2, 1966127, 327680, 2, 2031664, 327680, 2, 2031665, 327680, 2, 2031666, 327680, 2, 1966131, 327680, 2, 1900595, 327680, 2, 1835059, 327680, 2, 1769523, 327680, 2)
 
-[node name="StaticBody2D4" parent="." instance=ExtResource("2_agh0h")]
-position = Vector2(10, 81)
+[node name="victory" parent="." instance=ExtResource("3_mvip7")]
+position = Vector2(1208, 150)
 
-[node name="StaticBody2D5" parent="." instance=ExtResource("2_agh0h")]
-position = Vector2(26, 81)
-
-[node name="StaticBody2D6" parent="." instance=ExtResource("2_agh0h")]
-position = Vector2(42, 81)
-
-[node name="StaticBody2D7" parent="." instance=ExtResource("2_agh0h")]
-position = Vector2(58, 81)
-
-[node name="StaticBody2D8" parent="." instance=ExtResource("2_agh0h")]
-position = Vector2(74, 81)
-
-[node name="StaticBody2D9" parent="." instance=ExtResource("2_agh0h")]
-position = Vector2(90, 81)
-
-[node name="StaticBody2D10" parent="." instance=ExtResource("2_agh0h")]
-position = Vector2(106, 81)
-
-[node name="StaticBody2D11" parent="." instance=ExtResource("2_agh0h")]
-position = Vector2(122, 81)
-
-[node name="StaticBody2D12" parent="." instance=ExtResource("2_agh0h")]
-position = Vector2(138, 81)
-
-[node name="StaticBody2D13" parent="." instance=ExtResource("2_agh0h")]
-position = Vector2(154, 81)
-
-[node name="StaticBody2D14" parent="." instance=ExtResource("2_agh0h")]
-position = Vector2(170, 81)
-
-[node name="StaticBody2D15" parent="." instance=ExtResource("2_agh0h")]
-position = Vector2(186, 81)
-
-[node name="StaticBody2D16" parent="." instance=ExtResource("2_agh0h")]
-position = Vector2(202, 81)
-
-[node name="StaticBody2D17" parent="." instance=ExtResource("2_agh0h")]
-position = Vector2(218, 81)
-
-[node name="StaticBody2D18" parent="." instance=ExtResource("2_agh0h")]
-position = Vector2(234, 81)
-
-[node name="StaticBody2D19" parent="." instance=ExtResource("2_agh0h")]
-position = Vector2(250, 81)
-
-[node name="StaticBody2D20" parent="." instance=ExtResource("2_agh0h")]
-position = Vector2(266, 81)
+[node name="kineko" parent="." instance=ExtResource("3_ajcu4")]
+position = Vector2(674, 353)

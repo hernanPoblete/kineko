@@ -1,0 +1,16 @@
+[gd_scene load_steps=4 format=3 uid="uid://remm35loonch"]
+
+[ext_resource type="Script" path="res://MuroCajaA.gd" id="1_okafi"]
+[ext_resource type="Texture2D" uid="uid://chpv2y6lxmbkd" path="res://tiles/Cosas nabil uwu/Caja.png" id="2_gb7vr"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xm8j2"]
+size = Vector2(14, 14)
+
+[node name="MuroCajaA" type="StaticBody2D"]
+script = ExtResource("1_okafi")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_xm8j2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_gb7vr")
