@@ -1,8 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://uiu8xuicl84f"]
+[gd_scene load_steps=4 format=3 uid="uid://uiu8xuicl84f"]
 
 [ext_resource type="PackedScene" uid="uid://doptnwxcfibge" path="res://tiles/tile_map.tscn" id="2_kbwfn"]
 [ext_resource type="PackedScene" uid="uid://bvktdldsnypm6" path="res://sprites/kineko-sprites/kineko.tscn" id="2_mb3nf"]
-[ext_resource type="PackedScene" uid="uid://34bgr1g4s36q" path="res://tiles/Cosas nabil uwu/huevo.tscn" id="3_q7u3r"]
 
 [sub_resource type="GDScript" id="GDScript_behis"]
 script/source = "extends Node2D
@@ -16,6 +15,7 @@ var cajas_verdes = preload(\"res://tiles/Cosas nabil uwu/caja_verde.tscn\")
 var cajas_azules = preload(\"res://tiles/Cosas nabil uwu/caja_azul.tscn\")
 var checkpoint = preload(\"res://tiles/Cosas nabil uwu/checkpoint.tscn\")
 var compuerta = preload(\"res://tiles/Cosas nabil uwu/compuerta.tscn\")
+var victory = preload(\"res://tiles/Cosas nabil uwu/huevo.tscn\")
 
 func _ready(): 
 	var tilemap = $TileMap
@@ -85,17 +85,19 @@ func _ready():
 			object.rotar(3)
 			add_child(object)
 			tilemap.set_cell(0, cellpos, -1)
-
+		if tilemap.get_tipo(cellpos) == 12:
+			var object = victory.instantiate()
+			object.position = tilemap.map_to_local(cellpos) * tilemap.scale
+			add_child(object)
+			tilemap.set_cell(0, cellpos, -1)
 "
 
 [node name="Pruebas de Nabil U w U" type="Node2D"]
 script = SubResource("GDScript_behis")
 
 [node name="TileMap" parent="." instance=ExtResource("2_kbwfn")]
-layer_0/tile_data = PackedInt32Array(1769499, 65536, 2, 1900571, 65536, 2, 1835035, 65536, 2, 1966107, 65536, 2, 2031644, 65536, 2, 2031645, 65536, 2, 2031646, 65536, 2, 1966111, 65536, 2, 1900575, 65536, 2, 1835039, 65536, 2, 1769503, 65536, 2, 1769506, 65536, 0, 1835043, 65536, 0, 1900579, 65536, 0, 1966116, 65536, 0, 2031653, 65536, 0, 1966118, 65536, 0, 1900583, 65536, 0, 1835047, 65536, 0, 1966120, 65536, 0, 2031657, 65536, 0, 1966122, 65536, 0, 1900587, 65536, 0, 1835051, 65536, 0, 1769516, 65536, 0, 1769519, 327680, 2, 1835055, 327680, 2, 1900591, 327680, 2, 1966127, 327680, 2, 2031664, 327680, 2, 2031665, 327680, 2, 2031666, 327680, 2, 1966131, 327680, 2, 1900595, 327680, 2, 1835059, 327680, 2, 1769523, 327680, 2, 720927, 262144, 0, 720937, 327680, 0, 720948, 393216, 0, 786433, 65536, 1, 851969, 65536, 1, 917505, 65536, 1, 458788, 262144, 4, 1572870, 196608, 0, 1769474, 196608, 3, 1769481, 196608, 1, 2031622, 196608, 2)
+layer_0/tile_data = PackedInt32Array(1769499, 65536, 2, 1900571, 65536, 2, 1835035, 65536, 2, 1966107, 65536, 2, 2031644, 65536, 2, 2031645, 65536, 2, 2031646, 65536, 2, 1966111, 65536, 2, 1900575, 65536, 2, 1835039, 65536, 2, 1769503, 65536, 2, 1769506, 65536, 0, 1835043, 65536, 0, 1900579, 65536, 0, 1966116, 65536, 0, 2031653, 65536, 0, 1966118, 65536, 0, 1900583, 65536, 0, 1835047, 65536, 0, 1966120, 65536, 0, 2031657, 65536, 0, 1966122, 65536, 0, 1900587, 65536, 0, 1835051, 65536, 0, 1769516, 65536, 0, 1769519, 327680, 2, 1835055, 327680, 2, 1900591, 327680, 2, 1966127, 327680, 2, 2031664, 327680, 2, 2031665, 327680, 2, 2031666, 327680, 2, 1966131, 327680, 2, 1900595, 327680, 2, 1835059, 327680, 2, 1769523, 327680, 2, 720927, 262144, 0, 720937, 327680, 0, 720948, 393216, 0, 786433, 65536, 1, 851969, 65536, 1, 917505, 65536, 1, 458788, 262144, 4, 589899, 393216, 4, 1703942, 196608, 0, 1769479, 196608, 1, 1769478, 196608, 2, 1769477, 196608, 3)
 
 [node name="kineko" parent="." instance=ExtResource("2_mb3nf")]
-position = Vector2(300, 270)
-
-[node name="victory" parent="." instance=ExtResource("3_q7u3r")]
-position = Vector2(1208, 150)
+position = Vector2(325, 258)
+level_position = Vector2(50, 90)

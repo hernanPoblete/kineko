@@ -28,6 +28,8 @@ texture = ExtResource("1_geojh")
 3:3/0/custom_data_0 = 11
 4:4/0 = 0
 4:4/0/custom_data_0 = 7
+6:4/0 = 0
+6:4/0/custom_data_0 = 12
 
 [sub_resource type="TileSet" id="TileSet_ecvky"]
 custom_data_layer_0/name = "tipo"
