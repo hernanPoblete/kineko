@@ -5,10 +5,9 @@ extends VBoxContainer
 @onready var config = %Config
 @onready var creditos = %Creditos
 @onready var salir = %Salir
-
+@onready var color
 #Checkea si existe un archivo con los colores. Crea uno default si no existe
 func check_colors()->void:
-	var color
 	if not FileAccess.file_exists("user://color_data.json"):
 		var default_colors = [[1,0,0],[0,1,0],[0,0,1]]
 		var f = FileAccess.open("user://color_data.json", FileAccess.WRITE)
@@ -20,7 +19,7 @@ func check_colors()->void:
 		var data = JSON.parse_string(f.get_as_text())
 
 		color = data.map(func(x): return Color(x[0], x[1], x[2]))
-		RenderingServer.set_default_clear_color((color[0]+color[1]+color[2]).inverted()/3)
+	RenderingServer.set_default_clear_color(Color(0,0,0))
 
 func _ready() -> void:
 	check_colors()
