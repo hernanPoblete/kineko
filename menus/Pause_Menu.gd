@@ -21,8 +21,14 @@ func _input(event: InputEvent)-> void:
 		
 func _on_continuar_pressed():
 	hide()
+	get_tree().paused = false
 func _on_menu_principal_pressed():
 	get_tree().change_scene_to_file("res://menus/Main_Menu.tscn")
+	get_tree().paused = false
+
+#func _on_config_pressed():
+#	get_tree().change_scene_to_file("res://menus/colors.tscn")
+#	get_tree().paused = false
 	
 func _on_salir_pressed():
 	get_tree().quit()
