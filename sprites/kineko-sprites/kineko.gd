@@ -26,7 +26,7 @@ func _physics_process(delta: float)-> void:
 		velocity.x = direction_x * SPEED/sqrt(direction_x**2 + direction_y**2)
 		velocity.y = direction_y * SPEED/sqrt(direction_x**2 + direction_y**2)
 		sleep = 300
-		if dead == false:
+		if not dead:
 			playback.travel("run")
 	else:
 		velocity.x = 0
@@ -46,9 +46,10 @@ func kill():
 	playback.travel("dead")
 
 func teleport():
-	if dead == true:
+	if dead:
 		position = level_position
 		dead = false
+		playback.travel("idle")
 
 func win():
 	print("you win :D")

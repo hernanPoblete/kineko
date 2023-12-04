@@ -34,8 +34,6 @@ func _process(delta):
 	$"preview/0".color = color[0]
 	$"preview/1".color = color[1]
 	$"preview/2".color = color[2]
-	
-	RenderingServer.set_default_clear_color((color[0]+color[1]+color[2]).inverted()/3)
 
 func reset_colores():
 	$"pickers/Color 0".color = Color(1,0,0)
