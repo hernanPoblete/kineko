@@ -16,6 +16,7 @@ func _ready():
 	animation_tree.active = true
 	playback.travel("run")
 	ColorGlobal.Colores = colors
+	ColorGlobal.ColorGlobal = color_selected
 	
 func _physics_process(delta: float)-> void:
 	var direction_x = Input.get_axis("move_left", "move_right")
