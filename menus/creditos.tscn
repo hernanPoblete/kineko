@@ -1,8 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://dlpehw61c4mxo"]
+[gd_scene load_steps=8 format=3 uid="uid://dlpehw61c4mxo"]
 
 [ext_resource type="FontFile" uid="uid://boo1uh0hi61vw" path="res://fonts/daydream_3/Daydream.ttf" id="1_ln6sv"]
 [ext_resource type="FontFile" uid="uid://4uwjgyl5noka" path="res://fonts/dogica/TTF/dogicabold.ttf" id="2_qxbiv"]
 [ext_resource type="FontFile" uid="uid://c5vctseypw813" path="res://fonts/dogica/TTF/dogica.ttf" id="3_yj21o"]
+
+[sub_resource type="GDScript" id="GDScript_q43dy"]
+script/source = "extends Control
+
+var menu= load(\"res://menus/Main_Menu.tscn\")
+
+	
+func _on_menu_pressed() -> void:
+	get_tree().change_scene_to_packed(menu)
+	pass
+"
 
 [sub_resource type="Theme" id="Theme_na243"]
 default_font = ExtResource("1_ln6sv")
@@ -23,6 +34,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = SubResource("GDScript_q43dy")
 
 [node name="PanelContainer" type="PanelContainer" parent="."]
 layout_mode = 1
@@ -99,3 +111,13 @@ Daydream by Doublegum (Dafont)
 Dogica by Roberto Mocci (Dafont)
 
 Dogicapixel by Roberto Mocci (Dafont)"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="PanelContainer"]
+layout_mode = 2
+
+[node name="Menu" type="Button" parent="PanelContainer/VBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+text = "Menu"
+
+[connection signal="pressed" from="PanelContainer/VBoxContainer/Menu" to="." method="_on_menu_pressed"]
