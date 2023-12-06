@@ -6,6 +6,7 @@ extends VBoxContainer
 @onready var creditos = %Creditos
 @onready var salir = %Salir
 @onready var color
+
 #Checkea si existe un archivo con los colores. Crea uno default si no existe
 func check_colors()->void:
 	if not FileAccess.file_exists("user://color_data.json"):
@@ -25,7 +26,7 @@ func _ready() -> void:
 	check_colors()
 	jugar.pressed.connect(_on_jugar_pressed)
 	config.pressed.connect(_on_config_pressed)
-	#creditos.pressed.connect(_on_creditos_pressed)
+	creditos.pressed.connect(_on_creditos_pressed)
 	salir.pressed.connect(_on_salir_pressed)
 	
 func _on_jugar_pressed():
@@ -35,4 +36,5 @@ func _on_salir_pressed():
 	get_tree().quit()
 func _on_config_pressed():
 	get_tree().change_scene_to_file("res://menus/colors.tscn")
-
+func _on_creditos_pressed():
+	get_tree().change_scene_to_file("res://menus/creditos.tscn")

@@ -65,7 +65,7 @@ text = "Config"
 unique_name_in_owner = true
 layout_mode = 2
 theme = ExtResource("1_3qek6")
-text = "Menu"
+text = "Creditos"
 
 [node name="Salir" type="Button" parent="MarginContainer/PanelContainer/VBoxContainer"]
 unique_name_in_owner = true

@@ -1,0 +1,101 @@
+[gd_scene load_steps=7 format=3 uid="uid://dlpehw61c4mxo"]
+
+[ext_resource type="FontFile" uid="uid://boo1uh0hi61vw" path="res://fonts/daydream_3/Daydream.ttf" id="1_ln6sv"]
+[ext_resource type="FontFile" uid="uid://4uwjgyl5noka" path="res://fonts/dogica/TTF/dogicabold.ttf" id="2_qxbiv"]
+[ext_resource type="FontFile" uid="uid://c5vctseypw813" path="res://fonts/dogica/TTF/dogica.ttf" id="3_yj21o"]
+
+[sub_resource type="Theme" id="Theme_na243"]
+default_font = ExtResource("1_ln6sv")
+default_font_size = 40
+
+[sub_resource type="Theme" id="Theme_0vimr"]
+default_font = ExtResource("2_qxbiv")
+default_font_size = 25
+
+[sub_resource type="Theme" id="Theme_wsyrx"]
+default_font = ExtResource("3_yj21o")
+default_font_size = 20
+
+[node name="Creditos" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -637.0
+offset_right = 639.0
+offset_bottom = 723.0
+grow_horizontal = 2
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer"]
+layout_mode = 2
+theme = SubResource("Theme_na243")
+text = "Creditos"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/RichTextLabel"]
+layout_mode = 0
+offset_left = 7.0
+offset_top = 87.0
+offset_right = 1108.0
+offset_bottom = 704.0
+theme = SubResource("Theme_0vimr")
+text = "Desarrollo del juego
+
+
+
+
+
+
+
+
+
+Sprites Kineko
+
+
+
+
+
+
+
+Fonts"
+
+[node name="RichTextLabel" type="RichTextLabel" parent="PanelContainer/RichTextLabel/RichTextLabel"]
+layout_mode = 0
+offset_top = 45.0
+offset_right = 1277.0
+offset_bottom = 627.0
+theme = SubResource("Theme_wsyrx")
+text = "Macarena Bustamante
+
+Nabil Orellana
+
+Hernan Poblete
+
+
+
+
+
+
+
+Macarena Bustamante
+
+
+
+
+
+
+
+
+
+Daydream by Doublegum (Dafont)
+
+Dogica by Roberto Mocci (Dafont)
+
+Dogicapixel by Roberto Mocci (Dafont)"
